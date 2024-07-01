@@ -1,0 +1,23 @@
+{%extends "base.html"%}
+{%block start%}
+<h1 class="display-3 m-5">New Notes Page</h1>
+
+<div class="container d-flex flex-row m-5 justify-content-between align-content-between flex-wrap ">
+
+    {%for note in notes%}
+
+    <div class="card d-inline-flex mb-3" style="width: 25rem;">
+        <div class="card-body">
+          <h4 class="card-title">{{note.student_sub}}</h5>
+          <h5 class="card-title">Semester : {{note.student_sem}}</h6>
+          <p class="card-text"> Description : {{note.note_desc}}</p>
+          <a href="/media/{{note.note_file}}" class="btn btn-primary">OPEN</a>
+          <a href="/delete_note/{{note.id}}" class="btn btn-danger">DELETE</a>
+          <h6 class="card-title mt-2">Submission by : {{note.student_name}}</h5>
+        </div>
+      </div>
+
+      {%endfor%}
+
+</div>
+{%endblock%}

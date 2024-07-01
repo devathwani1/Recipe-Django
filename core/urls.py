@@ -32,6 +32,9 @@ urlpatterns = [
 
     path('submit_notes/',submit_notes,
          name = "submit_notes"),
+    path('view_notes/',view_notes,
+         name = "view_notes"),
+    path('delete_note/<id>',delete_note,name="delete_note"),
 
     
     path('contact/',contact,name='contact'),

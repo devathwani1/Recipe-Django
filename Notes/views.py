@@ -37,3 +37,14 @@ def submit_notes(request):
 
 
     return render(request,"Submit_notes.html")
+
+def view_notes(request):
+
+    notes = Notes.objects.all();
+
+    return render(request,"view_notes.html",context={'notes' : notes})
+
+def delete_note(request,id):
+    note = Notes.objects.get(id = id);
+    note.delete()
+    return redirect('/view_notes/')
