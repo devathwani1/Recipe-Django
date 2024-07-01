@@ -18,15 +18,20 @@ from django.contrib import admin
 from django.urls import path
 from home.views import *
 from vege.views import *
+from Notes.views import * 
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 
 urlpatterns = [
     path('',home,name='home'),
     path('receipes/',receipes,name='receipes'),
 
     path('delete-recepie/<id>/',delete_recepie,name="delete_recepie"),
+
+    path('submit_notes/',submit_notes,
+         name = "submit_notes"),
 
     
     path('contact/',contact,name='contact'),

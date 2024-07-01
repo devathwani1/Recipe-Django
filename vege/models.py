@@ -8,3 +8,4 @@ class Receipe(models.Model):
 
     def __str__(self) -> str:
         return self.receipe_name
+    
