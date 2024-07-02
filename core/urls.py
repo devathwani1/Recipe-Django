@@ -29,12 +29,14 @@ urlpatterns = [
     path('receipes/',receipes,name='receipes'),
 
     path('delete-recepie/<id>/',delete_recepie,name="delete_recepie"),
+    path('update-recepie/<id>/',update_receipe,name="update_receipe"),
 
     path('submit_notes/',submit_notes,
          name = "submit_notes"),
     path('view_notes/',view_notes,
          name = "view_notes"),
     path('delete_note/<id>',delete_note,name="delete_note"),
+    path('update_note/<id>',update_note,name="update_note"),
 
     
     path('contact/',contact,name='contact'),

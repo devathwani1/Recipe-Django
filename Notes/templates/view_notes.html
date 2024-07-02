@@ -2,7 +2,20 @@
 {%block start%}
 <h1 class="display-3 m-5">New Notes Page</h1>
 
+<form action="">
+  <div class="my-5 d-flex align-items-center mx-5">
+    
+    <hr>
+      <input name = "search" type="text" class="form-control mx-3"  >
+      <button type="submit" class="btn btn-primary">Search</button>
+    
+      </div>
+</form>
+
+</form>
 <div class="container d-flex flex-row m-5 justify-content-between align-content-between flex-wrap ">
+
+  <form action="">
 
     {%for note in notes%}
 
@@ -12,6 +25,7 @@
           <h5 class="card-title">Semester : {{note.student_sem}}</h6>
           <p class="card-text"> Description : {{note.note_desc}}</p>
           <a href="/media/{{note.note_file}}" class="btn btn-primary">OPEN</a>
+          <a href="/update_note/{{note.id}}" class="btn btn-success">UPDATE</a>
           <a href="/delete_note/{{note.id}}" class="btn btn-danger">DELETE</a>
           <h6 class="card-title mt-2">Submission by : {{note.student_name}}</h5>
         </div>

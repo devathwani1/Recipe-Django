@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container col-6 mt-5 card p-4">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 style="font-weight: 700;">Update Your Notes</h2>
+
+    <div class="mb-3">
+      <label style="font-weight: 700;" for="exampleInputEmail1" class="form-label">Name</label>
+      <input value = "{{Note.student_name}}" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="student_name" required>
+    </div>
+
+    <div class="mb-3">
+      <label style="font-weight: 700;" for="idInput" class="form-label">College Id</label>
+      <input value = "{{Note.student_id}}" type="number" class="form-control" id="idInput" name="student_id" required>
+    </div>
+
+    <div class="dropdown show my-4">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Semester {{Note.student_sem}}
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="#" onclick="selectSemester('1')">Semester 1</a>
+        <a class="dropdown-item" href="#" onclick="selectSemester('2')">Semester 2</a>
+        <a class="dropdown-item" href="#" onclick="selectSemester('3')">Semester 3</a>
+        <a class="dropdown-item" href="#" onclick="selectSemester('4')">Semester 4</a>
+        <a class="dropdown-item" href="#" onclick="selectSemester('5')">Semester 5</a>
+        <a class="dropdown-item" href="#" onclick="selectSemester('6')">Semester 6</a>
+      </div>
+
+      <input value = "{{Note.student_sem}}" type="hidden" name="student_sem" id="student_sem" required>
+    </div>
+
+    <div class="container m-0 p-0 mb-4">
+      <p style="font-weight: 700;">Choose Subject</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="student_sub" id="flexRadioDefault1" value="Computer Fundamentals and Emerging Technologies">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Computer Fundamentals and Emerging Technologies
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="student_sub" id="flexRadioDefault2" value="Discrete Mathematical Structure" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Discrete Mathematical Structure
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="student_sub" id="flexRadioDefault3" value="Digital Electronics" checked>
+        <label class="form-check-label" for="flexRadioDefault3">
+          Digital Electronics
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="student_sub" id="flexRadioDefault4" value="System Analysis and Design" checked>
+        <label class="form-check-label" for="flexRadioDefault4">
+          System Analysis and Design
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="student_sub" id="flexRadioDefault5" value="Programming in 'C' language" checked>
+        <label class="form-check-label" for="flexRadioDefault5">
+          Programming in 'C' language
+        </label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label style="font-weight: 700;" for="exampleInputPassword1" class="form-label">Description</label>
+      <textarea name="note_description" class="form-control">{{Note.note_desc}}</textarea>
+    </div>
+
+    <div class="mb-3">
+      <p style="font-weight: 700;">Upload File</p>
+      <input class="form-control" type="file" name="note_file">
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+      <button type="submit" class="col-6 btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  function selectSemester(semester) {
+    document.getElementById('dropdownMenuLink').textContent = 'Semester ' + semester;
+    document.getElementById('student_sem').value = semester;
+  }
+
+  const savedValue = "{{Note.student_sub|escapejs}}"
+  const radioButtons = document.querySelectorAll('input[name="student_sub"]');
+
+  radioButtons.forEach(radio => {
+    if(radio.value == savedValue){
+      radio.checked = true
+    }
+  })
+</script>
+
+
+
+{% endblock %}
